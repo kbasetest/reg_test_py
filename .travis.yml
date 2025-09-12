@@ -1,0 +1,33 @@
+language: python
+
+# TODO TRAVIS this needs to be retired in favor of GHA. Should probably just be removed for now
+#             Not clear that the SDK should even be providing CI integrations
+
+sudo: required
+
+services:
+  - docker
+
+branches:
+  only:
+    - master
+
+env:
+
+before_install:
+  - docker version
+
+install:
+  - pushd ..
+  - git clone https://github.com/kbase/jars
+  - git clone https://github.com/kbase/kb_sdk
+  - cd kb_sdk
+  - make bin
+  - make sdkbase
+  - export PATH=$(pwd)/bin:$PATH
+  - popd
+
+script:
+  - kb-sdk validate
+
+after_script:
