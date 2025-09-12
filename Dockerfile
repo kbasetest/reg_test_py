@@ -15,7 +15,7 @@ RUN apt update && apt install -y wget
 ENV SDK_VER=0.1.0-alpha2
 ENV SDK_SHA=a80d761fc5b27f043b5eb584f4e28c1d15bf920bdb257fc61a0b64fe97b0c87a
 RUN mkdir -p /sdk/bin \
-    && wget -O /sdk/bin/kb-sdk https://github.com/kbase/kb_sdk_plus/releases/download/$SDK_VER/kb-sdk-linux-x64 \
+    && wget -q -O /sdk/bin/kb-sdk https://github.com/kbase/kb_sdk_plus/releases/download/$SDK_VER/kb-sdk-linux-x64 \
     && echo "$SDK_SHA /sdk/bin/kb-sdk" | sha256sum --check \
     && chmod a+x /sdk/bin/kb-sdk
 ENV PATH=/sdk/bin:$PATH
