@@ -12,8 +12,8 @@ ENV PIP_PROGRESS_BAR=off
 RUN apt update && apt install -y wget
 
 # Install the SDK binary. This is required for spec compilation and catalog registration.
-ENV SDK_VER=0.1.0-alpha3
-ENV SDK_SHA=c790fd0a8995704c10fa853e0623706f83ca5fa099c409a3366b248821e7346d
+ENV SDK_VER=0.1.0-alpha4
+ENV SDK_SHA=abd85762e5ec9c56533e77639b4367cf2e0762971c5c58589bf8d96ffb203e55
 RUN mkdir -p /sdk/bin \
     && wget -q -O /sdk/bin/kb-sdk https://github.com/kbase/kb_sdk_plus/releases/download/$SDK_VER/kb-sdk-linux-x64 \
     && echo "$SDK_SHA /sdk/bin/kb-sdk" | sha256sum --check \
